@@ -15,8 +15,8 @@ class Game {
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
 
-        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}Back.png`), this.canvas.width, this.canvas.height, 'hallwayA.png')
-        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwayA.png'))
+        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}Back.PNG`), this.canvas.width, this.canvas.height, 'hallwayA.PNG')
+        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwayA.PNG'))
 
         this.fillLists()
         this.createRooms()
@@ -103,14 +103,14 @@ class Game {
                                 case 'A':
                                     if (this.getImgName(this.view.img).includes('B')) {
                                         this.player.x = this.player.baseImg.width - (this.player.baseImg.width / 2)
-                                        this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`))
+                                        this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.PNG`))
                                         this.player.lobby = this.getImgName(this.view.img)
                                     }
                                     break
                                 case 'B':
                                     if (this.getImgName(this.view.img).includes('A')) {
                                         this.player.x = this.canvas.width - (this.player.baseImg.width * 1.1)
-                                        this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`))
+                                        this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.PNG`))
                                         this.player.lobby = this.getImgName(this.view.img)
                                     }
                                     break
@@ -192,13 +192,13 @@ class Game {
 
 
     private createRooms() {
-        let basic1: Room = new RoomBasic303(Game.loadNewImage('assets/img/rooms/room3.jpg'), this.canvas.width, this.canvas.height)
-        let basic2: Room = new RoomSky403(Game.loadNewImage('assets/img/rooms/room7.jpg'), this.canvas.width, this.canvas.height)
-        let bath: Room = new RoomBath401(Game.loadNewImage('assets/img/rooms/room4.jpg'), this.canvas.width, this.canvas.height)
-        let beach: Room = new RoomBeach402(Game.loadNewImage('assets/img/rooms/room6.jpg'), this.canvas.width, this.canvas.height)
-        let chinese: Room = new RoomChinese400(Game.loadNewImage('assets/img/rooms/room5.jpg'), this.canvas.width, this.canvas.height)
-        let future: Room = new RoomFuture301(Game.loadNewImage('assets/img/rooms/room1.jpg'), this.canvas.width, this.canvas.height)
-        let penthouse: Room = new RoomPenthouse302(Game.loadNewImage('assets/img/rooms/room2.jpg'), this.canvas.width, this.canvas.height)
+        let basic1: Room = new RoomBasic303(Game.loadNewImage('assets/img/rooms/room3.JPG'), this.canvas.width, this.canvas.height)
+        let basic2: Room = new RoomSky403(Game.loadNewImage('assets/img/rooms/room7.JPG'), this.canvas.width, this.canvas.height)
+        let bath: Room = new RoomBath401(Game.loadNewImage('assets/img/rooms/room4.JPG'), this.canvas.width, this.canvas.height)
+        let beach: Room = new RoomBeach402(Game.loadNewImage('assets/img/rooms/room6.JPG'), this.canvas.width, this.canvas.height)
+        let chinese: Room = new RoomChinese400(Game.loadNewImage('assets/img/rooms/room5.JPG'), this.canvas.width, this.canvas.height)
+        let future: Room = new RoomFuture301(Game.loadNewImage('assets/img/rooms/room1.JPG'), this.canvas.width, this.canvas.height)
+        let penthouse: Room = new RoomPenthouse302(Game.loadNewImage('assets/img/rooms/room2.JPG'), this.canvas.width, this.canvas.height)
         this.rooms.push(basic1, basic2, bath, beach, chinese, future, penthouse)
     }
 
