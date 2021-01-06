@@ -15,7 +15,7 @@ class Player {
     constructor(name: string, characterName: string, img: HTMLImageElement, canvasWidth: number, canvasHeight: number, lobby: string) {
         this._playerName = name;
         this._characterName = characterName
-        this._img = img;
+        this._img = Game.loadNewImage('assets/img/startscreen/boy-character.png');
         this._x = canvasWidth / 2
         this._y = canvasHeight - 231//231 = img height
         this.keyListener = new KeyListener
@@ -23,7 +23,7 @@ class Player {
     }
 
     public update(canvasWidth: number, canvasHeight: number) {
-        this.img = Game.loadNewImage(`assets/img/players/charaback.png`)
+        this.img = Game.loadNewImage(`assets/img/startscreen/boy-character.png`)
         // this.move(canvasWidth, canvasHeight)
     }
 

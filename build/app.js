@@ -287,14 +287,14 @@ class Player {
         this._lastWalkImg = 1;
         this._playerName = name;
         this._characterName = characterName;
-        this._img = img;
+        this._img = Game.loadNewImage('assets/img/startscreen/boy-character.png');
         this._x = canvasWidth / 2;
         this._y = canvasHeight - 231;
         this.keyListener = new KeyListener;
         this._lobby = lobby;
     }
     update(canvasWidth, canvasHeight) {
-        this.img = Game.loadNewImage(`assets/img/players/charaback.png`);
+        this.img = Game.loadNewImage(`assets/img/startscreen/boy-character.png`);
     }
     move(canvasWidth, canvasHeight) {
         let floorDivider = canvasHeight / 2.07;
