@@ -354,10 +354,10 @@ class Player {
         let walkNum = this.walkNumCalculation();
         switch (direction) {
             case 'right':
-                this.img = Game.loadNewImage(`assets/img/players/walkCycle${this.playerName}/right/char${this.playerName}${walkNum}Right.png`);
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Right.png`);
                 break;
             case 'left':
-                this.img = Game.loadNewImage(`assets/img/players/walkCycle${this.playerName}/left/char${this.playerName}${walkNum}Left.png`);
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Left.png`);
                 break;
         }
         this.lastWalkImg++;
