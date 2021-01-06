@@ -294,7 +294,7 @@ class Player {
         this._lobby = lobby;
     }
     update(canvasWidth, canvasHeight) {
-        this.img = Game.loadNewImage(`assets/img/players/charABack.png`);
+        this.img = Game.loadNewImage(`assets/img/players/charaBack.png`);
     }
     move(canvasWidth, canvasHeight) {
         let floorDivider = canvasHeight / 2.07;
