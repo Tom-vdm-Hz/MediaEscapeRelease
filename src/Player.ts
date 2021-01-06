@@ -23,7 +23,7 @@ class Player {
     }
 
     public update(canvasWidth: number, canvasHeight: number) {
-        this.img = Game.loadNewImage(`assets/img/players/charaBack.png`)
+        this.img = Game.loadNewImage(`assets/img/players/charaback.png`)
         // this.move(canvasWidth, canvasHeight)
     }
 
