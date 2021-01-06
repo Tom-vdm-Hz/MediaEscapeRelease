@@ -2,7 +2,7 @@ class Player {
     private readonly _playerName: string
     private _characterName: string
     private _img: HTMLImageElement;
-    private _baseImg: HTMLImageElement = Game.loadNewImage(`assets/img/players/charABack`)
+    private _baseImg: HTMLImageElement = Game.loadNewImage(`assets/img/players/charABack.png`)
     private _collectedCodes: number[]
     private _x: number
     private _y: number
@@ -16,16 +16,14 @@ class Player {
         this._playerName = name;
         this._characterName = characterName
         this._img = img;
-        // this._x = canvasWidth / 2
-        // this._y = canvasHeight - 231//231 = img height
         this._x = canvasWidth / 2
-        this._y = canvasHeight /2//231 = img height
+        this._y = canvasHeight - 231//231 = img height
         this.keyListener = new KeyListener
         this._lobby = lobby
     }
 
     public update(canvasWidth: number, canvasHeight: number) {
-        this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Back`)
+        this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Back.png`)
         this.move(canvasWidth, canvasHeight)
     }
 
@@ -86,7 +84,7 @@ class Player {
                         break;
                 }
 
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Front`)
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Front.png`)
             }
             this.applySimpleGravity(canvasHeight, feetLocation, floorDivider)
         }
@@ -96,10 +94,10 @@ class Player {
         let walkNum: number = this.walkNumCalculation();
         switch (direction) {
             case 'right':
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Right`)
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Right.png`)
                 break;
             case 'left':
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Left`)
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Left.png`)
                 break;
         }
         this.lastWalkImg++

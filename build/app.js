@@ -9,8 +9,8 @@ class Game {
         this.canvas = canvas;
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
-        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}Back`), this.canvas.width, this.canvas.height, 'hallwayA.png');
-        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwayA'));
+        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}Back.png`), this.canvas.width, this.canvas.height, 'hallwayA.png');
+        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwayA.png'));
         this.fillLists();
         this.createRooms();
         requestAnimationFrame(this.step);
@@ -70,14 +70,14 @@ class Game {
                             case 'A':
                                 if (this.getImgName(this.view.img).includes('B')) {
                                     this.player.x = this.player.baseImg.width - (this.player.baseImg.width / 2);
-                                    this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}`));
+                                    this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`));
                                     this.player.lobby = this.getImgName(this.view.img);
                                 }
                                 break;
                             case 'B':
                                 if (this.getImgName(this.view.img).includes('A')) {
                                     this.player.x = this.canvas.width - (this.player.baseImg.width * 1.1);
-                                    this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}`));
+                                    this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`));
                                     this.player.lobby = this.getImgName(this.view.img);
                                 }
                                 break;
@@ -124,13 +124,13 @@ class Game {
         return fullPath.replace(/^.*[\\\/]/, '');
     }
     createRooms() {
-        let basic1 = new RoomBasic303(Game.loadNewImage('assets/img/rooms/room3'), this.canvas.width, this.canvas.height);
-        let basic2 = new RoomSky403(Game.loadNewImage('assets/img/rooms/room7'), this.canvas.width, this.canvas.height);
-        let bath = new RoomBath401(Game.loadNewImage('assets/img/rooms/room4'), this.canvas.width, this.canvas.height);
-        let beach = new RoomBeach402(Game.loadNewImage('assets/img/rooms/room6'), this.canvas.width, this.canvas.height);
-        let chinese = new RoomChinese400(Game.loadNewImage('assets/img/rooms/room5'), this.canvas.width, this.canvas.height);
-        let future = new RoomFuture301(Game.loadNewImage('assets/img/rooms/room1'), this.canvas.width, this.canvas.height);
-        let penthouse = new RoomPenthouse302(Game.loadNewImage('assets/img/rooms/room2'), this.canvas.width, this.canvas.height);
+        let basic1 = new RoomBasic303(Game.loadNewImage('assets/img/rooms/room3.jpg'), this.canvas.width, this.canvas.height);
+        let basic2 = new RoomSky403(Game.loadNewImage('assets/img/rooms/room7.jpg'), this.canvas.width, this.canvas.height);
+        let bath = new RoomBath401(Game.loadNewImage('assets/img/rooms/room4.jpg'), this.canvas.width, this.canvas.height);
+        let beach = new RoomBeach402(Game.loadNewImage('assets/img/rooms/room6.jpg'), this.canvas.width, this.canvas.height);
+        let chinese = new RoomChinese400(Game.loadNewImage('assets/img/rooms/room5.jpg'), this.canvas.width, this.canvas.height);
+        let future = new RoomFuture301(Game.loadNewImage('assets/img/rooms/room1.jpg'), this.canvas.width, this.canvas.height);
+        let penthouse = new RoomPenthouse302(Game.loadNewImage('assets/img/rooms/room2.jpg'), this.canvas.width, this.canvas.height);
         this.rooms.push(basic1, basic2, bath, beach, chinese, future, penthouse);
     }
     fillLists() {
@@ -281,7 +281,7 @@ KeyListener.KEY_S = 83;
 KeyListener.KEY_W = 87;
 class Player {
     constructor(name, characterName, img, canvasWidth, canvasHeight, lobby) {
-        this._baseImg = Game.loadNewImage(`assets/img/players/charABack`);
+        this._baseImg = Game.loadNewImage(`assets/img/players/charABack.png`);
         this.speed = 3;
         this._inRoom = false;
         this._lastWalkImg = 1;
@@ -289,12 +289,12 @@ class Player {
         this._characterName = characterName;
         this._img = img;
         this._x = canvasWidth / 2;
-        this._y = canvasHeight / 2;
+        this._y = canvasHeight - 231;
         this.keyListener = new KeyListener;
         this._lobby = lobby;
     }
     update(canvasWidth, canvasHeight) {
-        this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Back`);
+        this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Back.png`);
         this.move(canvasWidth, canvasHeight);
     }
     move(canvasWidth, canvasHeight) {
@@ -345,7 +345,7 @@ class Player {
                         }
                         break;
                 }
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Front`);
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}Front.png`);
             }
             this.applySimpleGravity(canvasHeight, feetLocation, floorDivider);
         }
@@ -354,10 +354,10 @@ class Player {
         let walkNum = this.walkNumCalculation();
         switch (direction) {
             case 'right':
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Right`);
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Right.png`);
                 break;
             case 'left':
-                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Left`);
+                this.img = Game.loadNewImage(`assets/img/players/char${this.playerName}${walkNum}Left.png`);
                 break;
         }
         this.lastWalkImg++;
