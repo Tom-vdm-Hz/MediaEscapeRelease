@@ -725,7 +725,7 @@ myStartButton.addEventListener('click', () => {
     document.getElementById("canvas").classList.add("block");
     document.getElementById("startScreen").classList.add("hidden");
     document.getElementById("startScreen").classList.remove("visible");
-    game = new Game(document.getElementById('canvas'), 'b', 'B', window.innerHeight, window.innerWidth);
+    game = new Game(document.getElementById('canvas'), 'b', 'b', window.innerHeight, window.innerWidth);
 });
 function getMousePosition(canvas, event, type) {
     let rect = canvas.getBoundingClientRect();
