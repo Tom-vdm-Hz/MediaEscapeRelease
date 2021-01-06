@@ -289,7 +289,7 @@ class Player {
         this._characterName = characterName;
         this._img = img;
         this._x = canvasWidth / 2;
-        this._y = canvasHeight - 231;
+        this._y = canvasHeight / 2;
         this.keyListener = new KeyListener;
         this._lobby = lobby;
     }
@@ -725,7 +725,7 @@ myStartButton.addEventListener('click', () => {
     document.getElementById("canvas").classList.add("block");
     document.getElementById("startScreen").classList.add("hidden");
     document.getElementById("startScreen").classList.remove("visible");
-    game = new Game(document.getElementById('canvas'), 'A', 'A', window.innerHeight, window.innerWidth);
+    game = new Game(document.getElementById('canvas'), 'a', 'a', window.innerHeight, window.innerWidth);
 });
 function getMousePosition(canvas, event, type) {
     let rect = canvas.getBoundingClientRect();
