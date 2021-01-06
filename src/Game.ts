@@ -15,8 +15,8 @@ class Game {
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
 
-        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/charaback.png`), this.canvas.width, this.canvas.height, 'hallwayA.png')
-        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwayA.png'))
+        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}back.png`), this.canvas.width, this.canvas.height, 'hallwaya.png')
+        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwaya.png'))
 
         this.fillLists()
         this.createRooms()
@@ -39,9 +39,9 @@ class Game {
     public update() {
         this.player.update(this.canvas.width, this.canvas.height)
 
-        if (this.getImgName(this.view.img).includes('A')) {
+        if (this.getImgName(this.view.img).includes('a')) {
             this.doorAndLobbyDetection(this.doorLocationsLobbyA)
-        } else if (this.getImgName(this.view.img).includes('B')) {
+        } else if (this.getImgName(this.view.img).includes('b')) {
             this.doorAndLobbyDetection(this.doorLocationsLobbyB)
         }
 
