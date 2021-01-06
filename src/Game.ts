@@ -101,6 +101,7 @@ class Game {
                         case 'lobby':
                             switch (obj.img) {
                                 case 'A':
+                                    
                                     if (this.getImgName(this.view.img).includes('B')) {
                                         this.player.x = this.player.baseImg.width - (this.player.baseImg.width / 2)
                                         this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`))
