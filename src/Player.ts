@@ -51,13 +51,13 @@ class Player {
             //w key is pressed
             if (this.keyListener.isKeyDown(87)) {
                 switch (this.lobby) {
-                    case 'hallwaya.png':
+                    case 'hallway1.png':
                         if (this.x > canvasWidth / 1.15 && this.x < canvasWidth && this.y > floorDivider) {
                             this._x = canvasWidth / 1.15 - (this.img.width * 2)
                             this._y = canvasHeight / 2.07 - this.img.height
                         }
                         break;
-                    case 'hallwayb.png':
+                    case 'hallway2.png':
                         if (this.x > 0 && this.x < canvasWidth / 8 && this.y > floorDivider) {
                             this._x = canvasWidth / 4.5 - this.img.width
                             this._y = canvasHeight / 2.07 - this.img.height
@@ -70,13 +70,13 @@ class Player {
             //s key is pressed
             if (this.keyListener.isKeyDown(83)) {
                 switch (this.lobby) {
-                    case 'hallwaya.png':
+                    case 'hallway1.png':
                         if (this.x > canvasWidth / 1.3 && this.x < canvasWidth / 1.15 && this.y < floorDivider) {
                             this._x = canvasWidth / 1.1
                             this._y = canvasHeight - this.img.height
                         }
                         break;
-                    case 'hallwayb.png':
+                    case 'hallway2.png':
                         if (this.x > canvasWidth / 8 && this.x < canvasWidth / 4.5 && this.y < floorDivider) {
                             this._x = canvasWidth / 8 - (this.img.width * 2)
                             this._y = canvasHeight - this.img.height

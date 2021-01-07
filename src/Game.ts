@@ -6,8 +6,8 @@ class Game {
     private activeQuestion: Question
     private rooms: Room[] = []
     private readonly canvas: HTMLCanvasElement;
-    private doorLocationsLobbyA: collisionObj[];
-    private doorLocationsLobbyB: collisionObj[];
+    private doorLocationsLobby1: collisionObj[];
+    private doorLocationsLobby2: collisionObj[];
     private lobbies: collisionObj[]
 
     public constructor(canvas: HTMLElement, playerName: string, characterName: string, windowHeight: number, windowWidth: number) {
@@ -15,8 +15,8 @@ class Game {
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
 
-        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}back.png`), this.canvas.width, this.canvas.height, 'hallwaya.png')
-        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwaya.png'))
+        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}back.png`), this.canvas.width, this.canvas.height, 'hallway1.png')
+        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallway1.png'))
 
         this.fillLists()
         this.createRooms()
@@ -39,10 +39,10 @@ class Game {
     public update() {
         this.player.update(this.canvas.width, this.canvas.height)
 
-        if (this.getImgName(this.view.img).includes('a')) {
-            this.doorAndLobbyDetection(this.doorLocationsLobbyA)
-        } else if (this.getImgName(this.view.img).includes('b')) {
-            this.doorAndLobbyDetection(this.doorLocationsLobbyB)
+        if (this.getImgName(this.view.img).includes('1')) {
+            this.doorAndLobbyDetection(this.doorLocationsLobby1)
+        } else if (this.getImgName(this.view.img).includes('2')) {
+            this.doorAndLobbyDetection(this.doorLocationsLobby2)
         }
 
         this.doorAndLobbyDetection(this.lobbies)
@@ -82,11 +82,6 @@ class Game {
 
         this.view.draw(ctx, this.canvas.width, this.canvas.height)
         this.player.draw(ctx)
-
-        ctx.beginPath();
-        ctx.rect(this.canvas.width / 1.12, this.canvas.height / 1.4, 10, 10);
-        ctx.stroke();
-
         if (this.activeQuestion != undefined) {
             this.activeQuestion.draw(ctx, this.canvas.width, this.canvas.height)
         }
@@ -100,16 +95,15 @@ class Game {
                     switch (obj.name) {
                         case 'lobby':
                             switch (obj.img) {
-                                case 'A':
-
-                                    if (this.getImgName(this.view.img).includes('B')) {
+                                case '1':
+                                    if (this.getImgName(this.view.img).includes('2')) {
                                         this.player.x = this.player.baseImg.width - (this.player.baseImg.width / 2)
                                         this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`))
                                         this.player.lobby = this.getImgName(this.view.img)
                                     }
                                     break
-                                case 'B':
-                                    if (this.getImgName(this.view.img).includes('A')) {
+                                case '2':
+                                    if (this.getImgName(this.view.img).includes('1')) {
                                         this.player.x = this.canvas.width - (this.player.baseImg.width * 1.1)
                                         this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`))
                                         this.player.lobby = this.getImgName(this.view.img)
@@ -211,7 +205,7 @@ class Game {
                 minY: 0,
                 maxX: this.player.baseImg.width / 2,
                 maxY: this.canvas.height,
-                img: 'B'
+                img: '2'
             },
             {
                 name: 'lobby',
@@ -219,10 +213,10 @@ class Game {
                 minY: 0,
                 maxX: this.canvas.width,
                 maxY: this.canvas.height,
-                img: 'A'
+                img: '1'
             }
         ]
-        this.doorLocationsLobbyA = [
+        this.doorLocationsLobby1 = [
             {
                 name: 'door',
                 minX: this.canvas.width / 35,
@@ -264,7 +258,7 @@ class Game {
                 img: 'room5'
             },
         ]
-        this.doorLocationsLobbyB = [
+        this.doorLocationsLobby2 = [
             {
                 name: 'door',
                 minX: this.canvas.width / 1.45,

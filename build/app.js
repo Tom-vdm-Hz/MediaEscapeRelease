@@ -9,19 +9,19 @@ class Game {
         this.canvas = canvas;
         this.canvas.width = windowWidth;
         this.canvas.height = windowHeight;
-        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}back.png`), this.canvas.width, this.canvas.height, 'hallwaya.png');
-        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallwaya.png'));
+        this.player = new Player(playerName, characterName, Game.loadNewImage(`assets/img/players/char${characterName}back.png`), this.canvas.width, this.canvas.height, 'hallway1.png');
+        this.view = new View(Game.loadNewImage('assets/img/backgrounds/hallway1.png'));
         this.fillLists();
         this.createRooms();
         requestAnimationFrame(this.step);
     }
     update() {
         this.player.update(this.canvas.width, this.canvas.height);
-        if (this.getImgName(this.view.img).includes('a')) {
-            this.doorAndLobbyDetection(this.doorLocationsLobbyA);
+        if (this.getImgName(this.view.img).includes('1')) {
+            this.doorAndLobbyDetection(this.doorLocationsLobby1);
         }
-        else if (this.getImgName(this.view.img).includes('b')) {
-            this.doorAndLobbyDetection(this.doorLocationsLobbyB);
+        else if (this.getImgName(this.view.img).includes('2')) {
+            this.doorAndLobbyDetection(this.doorLocationsLobby2);
         }
         this.doorAndLobbyDetection(this.lobbies);
         this.returnToLobby();
@@ -52,9 +52,6 @@ class Game {
         ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.view.draw(ctx, this.canvas.width, this.canvas.height);
         this.player.draw(ctx);
-        ctx.beginPath();
-        ctx.rect(this.canvas.width / 1.12, this.canvas.height / 1.4, 10, 10);
-        ctx.stroke();
         if (this.activeQuestion != undefined) {
             this.activeQuestion.draw(ctx, this.canvas.width, this.canvas.height);
         }
@@ -67,15 +64,15 @@ class Game {
                 switch (obj.name) {
                     case 'lobby':
                         switch (obj.img) {
-                            case 'A':
-                                if (this.getImgName(this.view.img).includes('B')) {
+                            case '1':
+                                if (this.getImgName(this.view.img).includes('2')) {
                                     this.player.x = this.player.baseImg.width - (this.player.baseImg.width / 2);
                                     this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`));
                                     this.player.lobby = this.getImgName(this.view.img);
                                 }
                                 break;
-                            case 'B':
-                                if (this.getImgName(this.view.img).includes('A')) {
+                            case '2':
+                                if (this.getImgName(this.view.img).includes('1')) {
                                     this.player.x = this.canvas.width - (this.player.baseImg.width * 1.1);
                                     this.view = new View(Game.loadNewImage(`assets/img/backgrounds/hallway${obj.img}.png`));
                                     this.player.lobby = this.getImgName(this.view.img);
@@ -141,7 +138,7 @@ class Game {
                 minY: 0,
                 maxX: this.player.baseImg.width / 2,
                 maxY: this.canvas.height,
-                img: 'B'
+                img: '2'
             },
             {
                 name: 'lobby',
@@ -149,10 +146,10 @@ class Game {
                 minY: 0,
                 maxX: this.canvas.width,
                 maxY: this.canvas.height,
-                img: 'A'
+                img: '1'
             }
         ];
-        this.doorLocationsLobbyA = [
+        this.doorLocationsLobby1 = [
             {
                 name: 'door',
                 minX: this.canvas.width / 35,
@@ -194,7 +191,7 @@ class Game {
                 img: 'room5'
             },
         ];
-        this.doorLocationsLobbyB = [
+        this.doorLocationsLobby2 = [
             {
                 name: 'door',
                 minX: this.canvas.width / 1.45,
@@ -315,13 +312,13 @@ class Player {
             }
             if (this.keyListener.isKeyDown(87)) {
                 switch (this.lobby) {
-                    case 'hallwaya.png':
+                    case 'hallway1.png':
                         if (this.x > canvasWidth / 1.15 && this.x < canvasWidth && this.y > floorDivider) {
                             this._x = canvasWidth / 1.15 - (this.img.width * 2);
                             this._y = canvasHeight / 2.07 - this.img.height;
                         }
                         break;
-                    case 'hallwayb.png':
+                    case 'hallway2.png':
                         if (this.x > 0 && this.x < canvasWidth / 8 && this.y > floorDivider) {
                             this._x = canvasWidth / 4.5 - this.img.width;
                             this._y = canvasHeight / 2.07 - this.img.height;
@@ -332,13 +329,13 @@ class Player {
             }
             if (this.keyListener.isKeyDown(83)) {
                 switch (this.lobby) {
-                    case 'hallwaya.png':
+                    case 'hallway1.png':
                         if (this.x > canvasWidth / 1.3 && this.x < canvasWidth / 1.15 && this.y < floorDivider) {
                             this._x = canvasWidth / 1.1;
                             this._y = canvasHeight - this.img.height;
                         }
                         break;
-                    case 'hallwayb.png':
+                    case 'hallway2.png':
                         if (this.x > canvasWidth / 8 && this.x < canvasWidth / 4.5 && this.y < floorDivider) {
                             this._x = canvasWidth / 8 - (this.img.width * 2);
                             this._y = canvasHeight - this.img.height;
