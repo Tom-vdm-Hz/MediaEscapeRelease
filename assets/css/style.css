@@ -10,6 +10,14 @@ html, body {
     height: 100%;
 }
 
+.wrapper {
+    background-image: url('../img/startscreen/front-hotel-street-2.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 html {
     background: url("../img/startscreen/front-hotel-street-2.jpg") no-repeat center fixed;
     background-size: cover;
